@@ -60,7 +60,7 @@
             android:paddingLeft="20sp"
             android:paddingTop="20sp"
             android:singleLine="true"
-            android:text="@string/test"
+            android:text="@string/title"
             android:textColor="#124C12"
             android:textSize="30sp"
             android:gravity="center"></TextView>
