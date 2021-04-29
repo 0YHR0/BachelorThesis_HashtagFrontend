@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WebViewActivity">
+    <com.example.hashtag.echarts.EchartView
+        android:id="@+id/web_01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#726969"
+        ></com.example.hashtag.echarts.EchartView>
+
+</RelativeLayout>

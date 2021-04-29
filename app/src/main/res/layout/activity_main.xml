@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+    <RelativeLayout
+        android:id="@+id/l_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#2EA194"
+        android:orientation="vertical"
+        android:padding="20dp"
+
+        >
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/btn_1"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_press"
+            android:text="Login"
+            android:textSize="30sp"
+            android:textColor="#99C333"
+            android:textAllCaps="false"
+            ></Button>
+
+        <Button
+            android:id="@+id/btn_1"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/view_1"
+            android:background="@drawable/btn_press"
+            android:text="是吗？"
+            android:textSize="30sp"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/rabbit"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:paddingLeft="20sp"
+            android:paddingTop="20sp"
+            android:singleLine="true"
+            android:text="@string/test"
+            android:textColor="#124C12"
+            android:textSize="30sp"
+            android:gravity="center"></TextView>
+
+        <Button
+        android:id="@+id/btn_web"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@id/btn_login"
+        android:background="@drawable/btn_press"
+        android:text="Web view"
+        android:textSize="30sp"
+        android:layout_marginTop="30dp"
+        />
+        <Button
+            android:id="@+id/btn_test"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/btn_web"
+            android:background="@drawable/btn_press"
+            android:text="Test"
+            android:textSize="30sp"
+            android:layout_marginTop="30dp"
+            />
+        <Button
+            android:id="@+id/btn_bar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/btn_test"
+            android:background="@drawable/btn_press"
+            android:text="bar"
+            android:textSize="30sp"
+            android:layout_marginTop="30dp"
+            />
+    </RelativeLayout>
+
+
+</ScrollView>
