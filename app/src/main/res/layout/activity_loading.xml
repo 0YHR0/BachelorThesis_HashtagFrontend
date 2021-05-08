@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WebViewActivity">
-    <com.example.hashtag.echarts.EchartView
-        android:id="@+id/web_01"
+    tools:context=".LoadingActivity">
+
+    <TextView
+        android:id="@+id/text_load"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#726969"
-        ></com.example.hashtag.echarts.EchartView>
+        android:text="Loading..."
+        android:gravity="center"
+        android:textSize="50sp"></TextView>
 
 </RelativeLayout>

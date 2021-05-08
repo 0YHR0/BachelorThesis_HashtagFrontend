@@ -4,22 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BarChartActivity">
+    tools:context=".BarchartMonthlyActivity">
 
     <TextView
-        android:id="@+id/text_all"
+        android:id="@+id/text_month"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="Hashtag Rank Overall"
+        android:text="Monthly Hashtag Rank"
         android:gravity="center"
         android:textSize="30sp"
-        android:background="#DFD9C62A"
-        android:textColor="#773434"></TextView>
+        android:background="#DFBCD92A"
+        android:textColor="#586229"></TextView>
+
     <WebView
-        android:id="@+id/web_bar"
+        android:id="@+id/web_barMonth"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/text_all"
-        ></WebView>
+        android:layout_below="@id/text_month"></WebView>
 
 </RelativeLayout>

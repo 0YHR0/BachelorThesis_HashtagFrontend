@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ButtonActivity"
-    android:background="#03A9F4">
+    tools:context=".BarchartWeeklyActivity">
+
     <TextView
-        android:id="@+id/tv_01"
+        android:id="@+id/text_week"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:text="of course"
-        android:textSize="20sp"
-        android:textColor="#FF9800"
+        android:layout_height="100dp"
+        android:text="Weekly Hashtag Rank"
         android:gravity="center"
-        ></TextView>
-    <ImageView
-        android:id="@+id/img_01"
-        android:layout_below="@id/tv_01"
+        android:textSize="30sp"
+        android:background="#DF66E5E1"
+        android:textColor="#2E5984"></TextView>
+
+    <WebView
+        android:id="@+id/web_barWeek"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#D0B594"
-        ></ImageView>
+        android:layout_height="match_parent"
+        android:layout_below="@id/text_week"></WebView>
 
 </RelativeLayout>

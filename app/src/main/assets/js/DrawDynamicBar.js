@@ -64,9 +64,12 @@ option = {
         animationDurationUpdate: 300,
         max: 5 // only the largest 6 bars will be displayed
     },
+    grid:{
+          left:'25%',
+                    },
     series: [{
         realtimeSort: true,
-        name: 'X',
+        name: 'count',
         type: 'bar',
         data: data,
         label: {

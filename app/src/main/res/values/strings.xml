@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Hashtag</string>
     <string name="title">Hashtag</string>
+    <string name="mysqlURL">jdbc:mysql://47.100.46.122:3306/hashtag?serverTimezone=GMT%2B8&amp;characterEncoding=utf-8&amp;useSSL=false</string>
+    <string name="user">hashtag</string>
+    <string name="password">Yhr99520</string>
 </resources>
