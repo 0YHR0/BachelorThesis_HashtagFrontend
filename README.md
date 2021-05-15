@@ -5,3 +5,5 @@
 You can find doc in app/doc.
 
 The connection to the database can be modified in app/src/main/res/values/strings.xml!
+
+You can find project structure in app/project structure.pdf!
