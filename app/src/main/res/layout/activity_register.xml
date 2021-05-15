@@ -46,6 +46,21 @@
         android:paddingRight="10dp"></EditText>
 
     <EditText
+        android:id="@+id/et_password_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/et_password"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:inputType="textPassword"
+        android:textSize="18sp"
+        android:hint="confirm your password"
+        android:background="@drawable/stroke"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"></EditText>
+
+    <EditText
         android:id="@+id/et_phone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -75,7 +90,7 @@
         android:id="@+id/sex_group"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@id/et_password"
+        android:layout_below="@id/et_password_confirm"
         android:orientation="horizontal">
 
         <RadioButton

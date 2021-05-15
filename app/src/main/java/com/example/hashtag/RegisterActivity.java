@@ -3,6 +3,7 @@ package com.example.hashtag;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.View;
@@ -16,6 +17,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * This class is used to define the register function
@@ -46,26 +49,69 @@ public class RegisterActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btn_register:
-
+                    SweetAlertDialog pDialog = new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.PROGRESS_TYPE);
+                    pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                    pDialog.setTitleText("registering...");
+                    pDialog.setCancelable(true);
+                    pDialog.show();
                     EditText et_phoneNumber = findViewById(R.id.et_phone);
                     String phoneNumber = et_phoneNumber.getText().toString();
                     EditText et_username = findViewById(R.id.et_username);
                     String username = et_username.getText().toString();
                     EditText et_password = findViewById(R.id.et_password);
                     String password = et_password.getText().toString();
+                    EditText et_password_confirm = findViewById(R.id.et_password_confirm);
+                    String password_confirm = et_password_confirm.getText().toString();
                     RadioGroup group = findViewById(R.id.sex_group);
                     RadioButton btn_sex = findViewById(group.getCheckedRadioButtonId());
                     String sex = btn_sex.getText().toString();
                     if (!phoneNumber.matches("^1\\d{10}$")) {
-                        Toast.makeText(RegisterActivity.this, "Please enter the right phone number!", Toast.LENGTH_SHORT).show();
+                        pDialog.cancel();
+                        new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Oops...")
+                                .setContentText("Please enter the right phone number!")
+                                .show();
+//                        Toast.makeText(RegisterActivity.this, "Please enter the right phone number!", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+
+                    if (username.equals("")) {
+                        pDialog.cancel();
+                        new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Oops...")
+                                .setContentText("Please input username!")
+                                .show();
+//                        Toast.makeText(RegisterActivity.this, "Please input username!", Toast.LENGTH_LONG).show();
                         break;
                     }
                     if (!password.matches("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$")) {
-                        Toast.makeText(RegisterActivity.this, "Please check your password! (Must contain digit,letter. Length from 8-16) ", Toast.LENGTH_LONG).show();
+                        pDialog.cancel();
+                        String pw = "Please check your password!";
+                        SweetAlertDialog diapass = new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE);
+                        diapass.setTitleText("Oops...")
+                                .setContentText(pw)
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+
+                                    @Override
+                                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                        new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                                .setTitleText("Must contain")
+                                                .setContentText("digit,letter.(length from 8-16) ")
+                                                .show();
+                                        diapass.cancel();
+
+                                    }
+                                })
+                                .show();
+//                        Toast.makeText(RegisterActivity.this, "Please check your password! (Must contain digit,letter. Length from 8-16) ", Toast.LENGTH_LONG).show();
                         break;
                     }
-                    if (username == "") {
-                        Toast.makeText(RegisterActivity.this, "Please input username!", Toast.LENGTH_LONG).show();
+                    if (!password.equals(password_confirm)) {
+                        pDialog.cancel();
+                        new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Oops...")
+                                .setContentText("Confirm your password!")
+                                .show();
                         break;
                     }
                     new Thread(new Runnable() {
@@ -84,15 +130,34 @@ public class RegisterActivity extends AppCompatActivity {
                                 ps.setObject(4, sex);
                                 int result = ps.executeUpdate();
                                 if (result == 0) {
-                                    Toast.makeText(RegisterActivity.this, "Username exists!", Toast.LENGTH_LONG).show();
+                                    pDialog.cancel();
+                                    new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                            .setTitleText("Oops...")
+                                            .setContentText("Username exists!")
+                                            .show();
                                 }
-                                Toast.makeText(RegisterActivity.this, "registering... ", Toast.LENGTH_SHORT).show();
-                                intent = new Intent(RegisterActivity.this, UserHomeActivity.class);
-                                intent.putExtra("username", username);
-                                startActivity(intent);
+                                pDialog.cancel();
+                                SweetAlertDialog success = new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.SUCCESS_TYPE);
+                                success.setTitleText("Good job!")
+                                        .setContentText("Register success !")
+                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+
+                                            @Override
+                                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                intent = new Intent(RegisterActivity.this, UserHomeActivity.class);
+                                                intent.putExtra("username", username);
+                                                startActivity(intent);
+                                                success.cancel();
+                                            }
+                                        })
+                                        .show();
                             } catch (Exception e) {
                                 System.out.println(e);
-                                Toast.makeText(RegisterActivity.this, "Username exists!", Toast.LENGTH_LONG).show();
+                                pDialog.cancel();
+                                new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
+                                        .setTitleText("Oops...")
+                                        .setContentText("Username exists!")
+                                        .show();
                             }
                             Looper.loop();
 

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * This class is used to show the home of the user
  */
@@ -60,23 +62,47 @@ public class UserHomeActivity extends AppCompatActivity {
             Intent loading = new Intent(UserHomeActivity.this, LoadingActivity.class);
             switch (v.getId()) {
                 case R.id.btn_logout:
-                    AlertDialog.Builder confirm = new AlertDialog.Builder(UserHomeActivity.this);
-                    confirm.setTitle("Confirm");
-                    confirm.setMessage("Are you sure to logout?");
-                    confirm.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Intent mainpage = new Intent(UserHomeActivity.this, MainActivity.class);
-                            startActivity(mainpage);
-                        }
-                    });
-                    confirm.setNegativeButton("No!", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                    SweetAlertDialog confirm_sweet = new SweetAlertDialog(UserHomeActivity.this);
+                    confirm_sweet.setTitleText("Logout")
+                            .setContentText("Are you sure to logout?")
+                            .setConfirmText("Yes!")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
 
-                        }
-                    });
-                    confirm.show();
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    Intent mainpage = new Intent(UserHomeActivity.this, MainActivity.class);
+                                    startActivity(mainpage);
+                                    confirm_sweet.cancel();
+                                    UserHomeActivity.this.finish();
+                                }
+                            })
+                            .setCancelText("No!");
+                    confirm_sweet.show();
+//                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener(){
+//
+//                            @Override
+//                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+//
+//                            }
+//                        });
+
+//                    AlertDialog.Builder confirm = new AlertDialog.Builder(UserHomeActivity.this);
+//                    confirm.setTitle("Confirm");
+//                    confirm.setMessage("Are you sure to logout?");
+//                    confirm.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Intent mainpage = new Intent(UserHomeActivity.this, MainActivity.class);
+//                            startActivity(mainpage);
+//                        }
+//                    });
+//                    confirm.setNegativeButton("No!", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//
+//                        }
+//                    });
+//                    confirm.show();
                     break;
                 case R.id.btn_bar:
                     Toast.makeText(UserHomeActivity.this, "analyzing overall hashtag... ", Toast.LENGTH_SHORT).show();

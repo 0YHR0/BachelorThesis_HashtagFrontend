@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.widget.Toast;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 /**
  * This class defines the main entrance of the App
  *
