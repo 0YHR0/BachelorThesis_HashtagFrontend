@@ -4,75 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".UserHomeActivity"
+    android:background="#8E9DE8">
 
     <RelativeLayout
-        android:id="@+id/l_1"
+        android:id="@+id/l_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#2EA194"
+        android:background="#8E9DE8"
         android:orientation="vertical"
-        android:padding="20dp"
-        >
-
-
+        android:padding="20dp">
 
         <TextView
-            android:id="@+id/view_1"
+            android:id="@+id/tv_username"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:drawableRight="@drawable/rabbit"
-            android:ellipsize="marquee"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:paddingLeft="20sp"
-            android:paddingTop="20sp"
-            android:singleLine="true"
-            android:text="@string/title"
-            android:textColor="#124C12"
+            android:layout_height="150dp"
+            android:text="username"
+            android:gravity="center"
             android:textSize="30sp"
-            android:gravity="center"></TextView>
 
-        <TextView
-            android:id="@+id/view_2"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/btn_bar_monthly"
-            android:ellipsize="marquee"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:paddingLeft="20sp"
-            android:paddingTop="20sp"
-            android:singleLine="true"
-            android:text="Login to analyze your own hashtags"
-            android:textColor="#9D3F28"
-            android:textSize="20sp"
-            android:gravity="center"></TextView>
-
-        <Button
-            android:id="@+id/btn_main_login"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_below="@id/view_2"
-            android:text="Login"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/btn_press"
-            android:textSize="30sp"
-            android:textColor="#D2562C"
-            android:textAllCaps="false" />
-
+            ></TextView>
 
         <Button
             android:id="@+id/btn_bar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_below="@id/view_1"
+            android:layout_below="@id/tv_username"
             android:text="Overall Hashtag rank"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
@@ -81,6 +38,7 @@
             android:textSize="30sp"
             android:textColor="#99C333"
             android:textAllCaps="false" />
+
         <Button
             android:id="@+id/btn_bar_daily"
             android:layout_width="match_parent"
@@ -93,8 +51,7 @@
             android:background="@drawable/btn_press"
             android:textSize="30sp"
             android:textColor="#99C333"
-            android:textAllCaps="false"
-            />
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/btn_bar_weekly"
@@ -123,7 +80,20 @@
             android:textSize="30sp"
             android:textColor="#99C333"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/tv_username"
+            android:text="Logout"
+            android:layout_marginTop="500dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btn_press"
+            android:textSize="30sp"
+            android:textColor="#D2562C"
+            android:textAllCaps="false" />
+
     </RelativeLayout>
-
-
 </ScrollView>

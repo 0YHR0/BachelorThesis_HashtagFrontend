@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,12 +17,13 @@ import android.widget.Toast;
  */
 
 public class MainActivity extends AppCompatActivity {
-    public TextView tv;
-    public Button btn_bar;
-    public Button btn_bar_weekly;
-    public Button btn_bar_monthly;
-    public Button btn_bar_daily;
-    public Onclick onclick = new Onclick();
+    private TextView tv;
+    private Button btn_bar;
+    private Button btn_bar_weekly;
+    private Button btn_bar_monthly;
+    private Button btn_bar_daily;
+    private Button btn_main_login;
+    private Onclick onclick = new Onclick();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btn_bar_weekly = findViewById(R.id.btn_bar_weekly);
         btn_bar_monthly = findViewById(R.id.btn_bar_monthly);
         btn_bar_daily = findViewById(R.id.btn_bar_daily);
+        btn_main_login = findViewById(R.id.btn_main_login);
         setOnclink();
     }
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btn_bar_weekly.setOnClickListener(onclick);
         btn_bar_monthly.setOnClickListener(onclick);
         btn_bar_daily.setOnClickListener(onclick);
+        btn_main_login.setOnClickListener(onclick);
     }
 
     /**
@@ -64,25 +66,31 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()) {
 
                 case R.id.btn_bar:
-                    Toast.makeText(MainActivity.this, "hashtag totally", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "analyzing overall hashtag... ", Toast.LENGTH_SHORT).show();
                     loading.putExtra("type", "overall");
                     startActivity(loading);
                     break;
                 case R.id.btn_bar_weekly:
-                    Toast.makeText(MainActivity.this, "hashtag weekly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "analyzing weekly hashtag...", Toast.LENGTH_SHORT).show();
                     loading.putExtra("type", "week");
                     startActivity(loading);
                     break;
                 case R.id.btn_bar_monthly:
-                    Toast.makeText(MainActivity.this, "hashtag monthly", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "analyzing monthly hashtag...", Toast.LENGTH_SHORT).show();
                     loading.putExtra("type", "month");
                     startActivity(loading);
                     break;
                 case R.id.btn_bar_daily:
-                    Toast.makeText(MainActivity.this, "hashtag daily", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "analyzing daily hashtag...", Toast.LENGTH_SHORT).show();
                     loading.putExtra("type", "day");
                     startActivity(loading);
                     break;
+                case R.id.btn_main_login:
+                    Toast.makeText(MainActivity.this, "Login...", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    break;
+
 
             }
 
