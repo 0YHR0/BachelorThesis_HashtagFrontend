@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateProjectActivity"
+    android:background="#FFF6ED">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_create"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#DFE9AF76"
+            android:gravity="center"
+            android:text="Please create your own project"
+            android:textSize="25sp"></TextView>
+
+        <TextView
+            android:id="@+id/tv_project_name"
+            android:layout_width="match_parent"
+            android:layout_below="@id/tv_create"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="Project name: "
+            android:textSize="18sp"></TextView>
+
+        <EditText
+            android:id="@+id/et_project_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_project_name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/stroke"
+            android:hint="Project_01"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp"></EditText>
+
+        <TextView
+            android:id="@+id/tv_hashtagset"
+            android:layout_width="match_parent"
+            android:layout_below="@id/et_project_name"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="hashtag set (Please divided them with , )"
+            android:textSize="18sp"></TextView>
+
+        <EditText
+            android:id="@+id/et_hashtagset"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_hashtagset"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/stroke"
+            android:hint="German,Football,Corona..."
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp"></EditText>
+
+        <TextView
+            android:id="@+id/tv_start_time"
+            android:layout_width="match_parent"
+            android:layout_below="@id/et_hashtagset"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Starting date: (yyyy-mm-dd)"
+            android:textSize="18sp"></TextView>
+
+        <EditText
+            android:id="@+id/et_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_start_time"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/stroke"
+            android:hint="2021-05-20"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp"></EditText>
+
+        <TextView
+            android:id="@+id/tv_end_time"
+            android:layout_width="match_parent"
+            android:layout_below="@id/et_start_time"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Ending date: (yyyy-mm-dd)"
+            android:textSize="18sp"></TextView>
+
+        <EditText
+            android:id="@+id/et_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_end_time"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/stroke"
+            android:hint="2021-5-30"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp"></EditText>
+
+        <Button
+            android:id="@+id/btn_create_confirm"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/et_end_time"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_create"
+            android:textAllCaps="false"
+            android:text="Confirm!"
+            android:textSize="20sp"
+            android:textColor="#D9C37B"></Button>
+    </RelativeLayout>
+
+</ScrollView>

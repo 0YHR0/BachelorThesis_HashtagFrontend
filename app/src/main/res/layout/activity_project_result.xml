@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProjectResultActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_project_result"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Project analyze result"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:background="#DF68E87E"
+            android:textColor="#072967"></TextView>
+
+        <WebView
+            android:id="@+id/web_project_result_rank"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_below="@id/text_project_result"
+            android:layout_marginLeft="20dp"></WebView>
+
+        <TextView
+            android:id="@+id/tv_blank"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/web_project_result_rank"></TextView>
+
+        <WebView
+            android:id="@+id/web_peoject_result_amount"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_below="@id/tv_blank"
+            android:layout_marginLeft="20dp"></WebView>
+    </RelativeLayout>
+</ScrollView>

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * This class is used to show the home of the user
+ * @author Yang Haoran
  */
 public class UserHomeActivity extends AppCompatActivity {
     private Button btn_logout;
@@ -22,6 +24,7 @@ public class UserHomeActivity extends AppCompatActivity {
     private Button btn_bar_weekly;
     private Button btn_bar_monthly;
     private Button btn_bar_daily;
+    private Button btn_project_house;
     private Onclick onclick = new Onclick();
 
     @Override
@@ -37,6 +40,7 @@ public class UserHomeActivity extends AppCompatActivity {
         btn_bar_weekly = findViewById(R.id.btn_bar_weekly);
         btn_bar_monthly = findViewById(R.id.btn_bar_monthly);
         btn_bar_daily = findViewById(R.id.btn_bar_daily);
+        btn_project_house = findViewById(R.id.btn_project_house);
         setOnclink();
     }
 
@@ -50,15 +54,19 @@ public class UserHomeActivity extends AppCompatActivity {
         btn_bar_monthly.setOnClickListener(onclick);
         btn_bar_daily.setOnClickListener(onclick);
         btn_logout.setOnClickListener(onclick);
+        btn_project_house.setOnClickListener(onclick);
     }
+
 
     /**
      * This class is used to set the onclick to the button
+     * @author Yang Haoran
      */
     private class Onclick implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
+            Intent newpage = new Intent();
             Intent loading = new Intent(UserHomeActivity.this, LoadingActivity.class);
             switch (v.getId()) {
                 case R.id.btn_logout:
@@ -78,31 +86,6 @@ public class UserHomeActivity extends AppCompatActivity {
                             })
                             .setCancelText("No!");
                     confirm_sweet.show();
-//                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener(){
-//
-//                            @Override
-//                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-//
-//                            }
-//                        });
-
-//                    AlertDialog.Builder confirm = new AlertDialog.Builder(UserHomeActivity.this);
-//                    confirm.setTitle("Confirm");
-//                    confirm.setMessage("Are you sure to logout?");
-//                    confirm.setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            Intent mainpage = new Intent(UserHomeActivity.this, MainActivity.class);
-//                            startActivity(mainpage);
-//                        }
-//                    });
-//                    confirm.setNegativeButton("No!", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//
-//                        }
-//                    });
-//                    confirm.show();
                     break;
                 case R.id.btn_bar:
                     Toast.makeText(UserHomeActivity.this, "analyzing overall hashtag... ", Toast.LENGTH_SHORT).show();
@@ -123,6 +106,14 @@ public class UserHomeActivity extends AppCompatActivity {
                     Toast.makeText(UserHomeActivity.this, "analyzing daily hashtag...", Toast.LENGTH_SHORT).show();
                     loading.putExtra("type", "day");
                     startActivity(loading);
+                    break;
+                case R.id.btn_project_house:
+                    Toast.makeText(UserHomeActivity.this, "going to the project house...", Toast.LENGTH_SHORT).show();
+                    Intent intent = getIntent();
+                    String username = intent.getStringExtra("username");
+                    newpage = new Intent(UserHomeActivity.this, ProjectHouseActivity.class);
+                    newpage.putExtra("username", username);
+                    startActivity(newpage);
                     break;
 
 

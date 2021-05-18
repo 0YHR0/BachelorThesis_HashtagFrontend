@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProjectHouseActivity"
+    android:background="#B6D3F4">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_project"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="project house"
+            android:gravity="center"
+            android:textSize="30sp"></TextView>
+
+        <EditText
+            android:id="@+id/et_search_hashtag"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_project"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/stroke"
+            android:hint="You can search for a specific hashtag for its rank and count..."
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="18sp"></EditText>
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/et_search_hashtag"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Search"
+            android:textColor="#D9C37B"
+            android:textSize="20sp"
+            android:background="@drawable/btn_press"
+            android:textAllCaps="false"></Button>
+
+        <TextView
+            android:id="@+id/tv_line"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/btn_search"
+            android:text="-----------------------------------------------------------------"
+            android:gravity="center"
+            android:textColor="#979797"
+            android:textSize="40sp"></TextView>
+
+        <Button
+            android:id="@+id/btn_create"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/tv_line"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_create"
+            android:textAllCaps="false"
+            android:text="Create a new Project"
+            android:textSize="20sp"
+            android:textColor="#D9C37B"></Button>
+
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_below="@id/btn_create"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

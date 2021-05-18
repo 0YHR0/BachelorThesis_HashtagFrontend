@@ -82,6 +82,21 @@
             android:textAllCaps="false" />
 
         <Button
+            android:id="@+id/btn_project_house"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/btn_bar_monthly"
+            android:text="Project House"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/btn_press"
+            android:textSize="30sp"
+            android:textColor="#11D2D5"
+            android:textAllCaps="false" />
+
+
+        <Button
             android:id="@+id/btn_logout"
             android:layout_width="match_parent"
             android:layout_height="55dp"
