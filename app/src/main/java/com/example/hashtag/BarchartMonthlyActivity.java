@@ -67,7 +67,7 @@ public class BarchartMonthlyActivity extends AppCompatActivity {
     }
 
     /**
-     * Get the total hashtag count from the database
+     * Get the monthly hashtag count from the database
      *
      * @return the hashtag and the count
      * @throws Exception

@@ -2,6 +2,7 @@ package com.example.hashtag;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,6 +19,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -29,25 +33,51 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class ProjectHouseActivity extends AppCompatActivity {
     private Button btn_search;
     private Button btn_create;
+    private Button btn_show;
     private RelativeLayout layout;
+    ResultSet result = null;
+    String username = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_house);
         Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
+        username = intent.getStringExtra("username");
         TextView projectHouse = findViewById(R.id.tv_project);
         layout = findViewById(R.id.layout);
         projectHouse.setText(username + "'s project house");
         btn_search = findViewById(R.id.btn_search);
         btn_create = findViewById(R.id.btn_create);
+        btn_show = findViewById(R.id.btn_show);
 
-        //add the listener for the create buton
+        //get the project
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Looper.prepare();
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection(getResources().getString(R.string.mysqlURL), getResources().getString(R.string.user), getResources().getString(R.string.password));
+                    String sql = "select project_name from project where username=?";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ps.setObject(1, username);
+                    result = ps.executeQuery();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+
+                Looper.loop();
+
+            }
+        }).start();
+
+        //add the listener for the create button
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProjectHouseActivity.this, CreateProjectActivity.class);
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
@@ -88,7 +118,6 @@ public class ProjectHouseActivity extends AppCompatActivity {
                                     count = result_count.getString(1);
                                 }
                                 pDialog.cancel();
-//                                        Toast.makeText(LoginActivity.this, "Login success !!! ", Toast.LENGTH_SHORT).show();
                                 SweetAlertDialog success = new SweetAlertDialog(ProjectHouseActivity.this, SweetAlertDialog.SUCCESS_TYPE);
                                 success.setTitleText("Success!")
                                         .setContentText("The rank of '" + hashtag + "'" + " is: " + rank + "\n The count of '" + hashtag + "' is: " + count + " !")
@@ -115,43 +144,70 @@ public class ProjectHouseActivity extends AppCompatActivity {
                 }).start();
             }
         });
-        setProject();
+        btn_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    setProject();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+
     }
 
     /**
      * set the existing project
      */
-    public void setProject() {
-        //get the size of screen
+    public void setProject() throws SQLException {
+// get the project when the page returns to this activity
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection conn = DriverManager.getConnection(getResources().getString(R.string.mysqlURL), getResources().getString(R.string.user), getResources().getString(R.string.password));
+                    String sql = "select project_name from project where username=?";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ps.setObject(1, username);
+                    result = ps.executeQuery();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+        }).start();
+        //set the button to the view
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         RelativeLayout layoutR = new RelativeLayout(this);
-        Button btn[] = new Button[5];
+        int i = 0;
         int j = -1;
-        String buttonName;
-        for (int i = 0; i < btn.length; i++) {
-            btn[i] = new Button(this);
-            btn[i].setId(2000 + i);
-            buttonName = "Project" + i;
-            btn[i].setText(buttonName);
-            btn[i].setBackgroundResource(R.drawable.btn_project);
-            btn[i].setAllCaps(false);
-            btn[i].setOnClickListener(new View.OnClickListener() {
+        List<Button> btn = new ArrayList<Button>();
+        while (result.next()) {
+            if (i % 2 == 0) {
+                j++;
+            }
+            Button button = new Button(this);
+            button.setId(2000 + i);
+            button.setText(result.getString(1));
+            button.setBackgroundResource(R.drawable.btn_project);
+            button.setAllCaps(false);
+            RelativeLayout.LayoutParams btParams = new RelativeLayout.LayoutParams((width - 50) / 2, 200);  //set the size of button
+            btParams.leftMargin = 15 + ((width - 50) / 2 + 20) * (i % 2);   //x axis
+            btParams.topMargin = 20 + 220 * j;   //y axis
+            layoutR.addView(button, btParams);
+            button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(ProjectHouseActivity.this, ProjectResultActivity.class);
                     startActivity(intent);
                 }
             });
-            RelativeLayout.LayoutParams btParams = new RelativeLayout.LayoutParams((width - 50) / 2, 200);  //设置按钮的宽度和高度
-            if (i % 2 == 0) {
-                j++;
-            }
-            btParams.leftMargin = 15 + ((width - 50) / 2 + 20) * (i % 2);   //横坐标定位
-            btParams.topMargin = 20 + 220 * j;   //纵坐标定位
-            layoutR.addView(btn[i], btParams);   //将按钮放入layout组件
+            i++;
         }
         layout.addView(layoutR);
 

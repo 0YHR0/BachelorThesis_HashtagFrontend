@@ -65,13 +65,13 @@ public class RegisterActivity extends AppCompatActivity {
                     RadioGroup group = findViewById(R.id.sex_group);
                     RadioButton btn_sex = findViewById(group.getCheckedRadioButtonId());
                     String sex = btn_sex.getText().toString();
+                    //filter the input of the user
                     if (!phoneNumber.matches("^1\\d{10}$")) {
                         pDialog.cancel();
                         new SweetAlertDialog(RegisterActivity.this, SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText("Oops...")
                                 .setContentText("Please enter the right phone number!")
                                 .show();
-//                        Toast.makeText(RegisterActivity.this, "Please enter the right phone number!", Toast.LENGTH_SHORT).show();
                         break;
                     }
 
@@ -81,7 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 .setTitleText("Oops...")
                                 .setContentText("Please input username!")
                                 .show();
-//                        Toast.makeText(RegisterActivity.this, "Please input username!", Toast.LENGTH_LONG).show();
                         break;
                     }
                     if (!password.matches("^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$")) {
@@ -103,7 +102,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     }
                                 })
                                 .show();
-//                        Toast.makeText(RegisterActivity.this, "Please check your password! (Must contain digit,letter. Length from 8-16) ", Toast.LENGTH_LONG).show();
                         break;
                     }
                     if (!password.equals(password_confirm)) {

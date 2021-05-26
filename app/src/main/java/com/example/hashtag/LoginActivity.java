@@ -71,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
                                 .setTitleText("Oops...")
                                 .setContentText("Please input your username!")
                                 .show();
-//                        Toast.makeText(LoginActivity.this, "Please input your username! ", Toast.LENGTH_LONG).show();
                         break;
                     } else if (password.equals("")) {
                         pDialog.cancel();
@@ -79,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
                                 .setTitleText("Oops...")
                                 .setContentText("Please input your password!")
                                 .show();
-//                        Toast.makeText(LoginActivity.this, "Please input your password! ", Toast.LENGTH_LONG).show();
                         break;
                     } else {
                         new Thread(new Runnable() {
